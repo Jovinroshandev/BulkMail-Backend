@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer")
 const mongoose = require("mongoose")
 const app = express()
 require("dotenv").config()
+
 app.use(cors())
 app.use(express.json())
 
@@ -12,7 +13,9 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err) => console.log("DB Connection Failed", err))
 const credential = mongoose.model("credential", { user: String, pass: String }, "Bulkmail")
 
-
+app.get("/",function(req,res){
+    res.send("Welcome to API")
+})
 // Mail Trigger API
 app.post("/sendmail", function (req, res) {
     const content = req.body.content

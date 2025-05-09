@@ -54,7 +54,7 @@ app.post("/sendmail", function (req, res) {
         }).then(function () {
             res.send(true)
         }).catch(function () {
-            ressend(false)
+            res.send(false)
         })
     }).catch(function (err) {
         console.log(err)
